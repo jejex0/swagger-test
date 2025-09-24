@@ -2,7 +2,8 @@ openapi: 3.0.3
 info:
   title: "Normal title"
   version: "1.0.0"
-  description: "**Markdown** with HTML: <img src=x onerror=alert('DESC')>"
+  description: |
+  <svg xmlns="http://www.w3.org/2000/svg" onload="alert('XSS2')"></svg>
 tags:
   - name: test
     description: "<svg onload=alert('TAG')></svg>"
