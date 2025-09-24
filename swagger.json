@@ -1,0 +1,9 @@
+{
+  "swagger": "3.0.1",
+  "info": {
+    "title": "<img src=x onerror=alert(1)>",
+    "version": "1.0.0",
+    "description": "<h1 style='color:red'>Injected!</h1>"
+  },
+  "paths": {}
+}
