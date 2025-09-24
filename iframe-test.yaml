@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Swagger iframe Injection Test
+  version: "1.0.0"
+  description: |
+    <iframe srcdoc="<script>alert('iframe1')</script>"></iframe>
+    <iframe src="javascript:alert('iframe2')"></iframe>
+    <iframe srcdoc='<img src onerror=alert("iframe3")>'></iframe>
+    <iframe srcdoc='<svg/onload=alert(`iframe4`)>'></iframe>
+tags:
+  - name: iframe-xss
+    description: |
+      <iframe srcdoc="<script>alert('tag-iframe')</script>"></iframe>
+paths:
+  /iframe:
+    get:
+      summary: "Test iframe injection endpoint"
+      description: |
+        <iframe srcdoc="<script>alert('endpoint-iframe')</script>"></iframe>
+      responses:
+        "200":
+          description: |
+            <iframe srcdoc="<script>alert('200iframe')</script>"></iframe>
