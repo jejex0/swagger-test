@@ -1,9 +1,9 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.3",
   "info": {
     "title": "<img src=x onerror=alert('XSS')>",
     "version": "1.0.0",
-    "description": "Injected payload test"
+    "description": "OpenAPI 3.0 XSS test"
   },
   "paths": {}
 }
