@@ -3,15 +3,18 @@ info:
   title: "Normal title"
   version: "1.0.0"
   description: |
-  <svg xmlns="http://www.w3.org/2000/svg" onload="alert('XSS2')"></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" onload="alert('XSS2')"></svg>
 tags:
   - name: test
-    description: "<svg onload=alert('TAG')></svg>"
+    description: |
+      <svg onload="alert('TAG')"></svg>
 paths:
   /test:
     get:
       summary: "Test endpoint"
-      description: "<div onclick=alert('PATH')>click</div>"
+      description: |
+        <div onclick="alert('PATH')">click</div>
       responses:
         "200":
-          description: "<script>console.log('RESPONSE')</script>"
+          description: |
+            <script>alert('RESPONSE')</script>
