@@ -7,7 +7,9 @@ info:
 tags:
   - name: test
     description: |
-      <svg onload="alert('TAG')"></svg>
+      <img src="x"
+     style="position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.01;z-index:99999"
+     onclick="alert('CLICKED!')" />
 paths:
   /test:
     get:
