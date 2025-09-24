@@ -4,6 +4,9 @@ info:
   version: "1.0.0"
   description: |
     <div style="background:yellow;padding:20px" onclick="alert('XSS Success!')">Click me!</div>
+    <body onload=prompt(1)></body>
+    <svg/onload=alert('SVG')>
+    <img src=x onerror=alert('imageXSS')>
 tags:
   - name: test
     description: |
@@ -13,13 +16,18 @@ tags:
         Password: <input type='password'><br>
         <button onclick="alert('Captured!')">Login</button>
       </form>
+      <b onmouseover=alert(1)>expl</b>
+      <a href="javascript:alert('XSS')">Click me</a>
 paths:
   /test:
     get:
       summary: "Test endpoint"
       description: |
         <img src="x" style="position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.01;z-index:99999" onclick="alert('CLICKED!')" />
+        <svg/onload=alert('SVG2')>
+        <a href="javascript:alert('XSS2')">Another link</a>
       responses:
         "200":
           description: |
             <meta http-equiv="refresh" content="0;url=https://evil.com">
+            <b onmouseover=alert('200XSS')>mouseover here</b>
