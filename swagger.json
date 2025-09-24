@@ -1,9 +1,0 @@
-{
-  "openapi": "3.0.3",
-  "info": {
-    "title": "<body onload=prompt(1)>",
-    "version": "1.0.0",
-    "description": "OpenAPI 3.0 XSS test"
-  },
-  "paths": {}
-}
